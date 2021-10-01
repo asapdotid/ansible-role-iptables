@@ -1,11 +1,11 @@
-#<p align="center"> <img src="https://user-images.githubusercontent.com/34257858/129839002-15e3f2c7-3f75-46d4-afae-0fd207d7fdde.png" width="100" height="100"></p>
+<p align="center"> <img src="https://user-images.githubusercontent.com/34257858/129839002-15e3f2c7-3f75-46d4-afae-0fd207d7fdde.png" width="100" height="100"></p>
 
 <h1 align="center">
-    Ansible Role Firewall (`iptables`)
+    Ansible Role Firewall (<b>iptables</b>)
 </h1>
 
 <p align="center" style="font-size: 1.2rem;">
-    Installs an iptables-based firewall for Linux. Supports both IPv4 (`iptables`) and IPv6 (`ip6tables`).
+    Installs an iptables-based firewall for Linux. Supports both IPv4 (<b>iptables</b>) and IPv6 (<b>ip6tables</b>).
 </p>
 
 <p align="center">

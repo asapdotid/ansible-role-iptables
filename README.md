@@ -1,12 +1,27 @@
-# Ansible Role: Firewall (iptables)
+#<p align="center"> <img src="https://user-images.githubusercontent.com/34257858/129839002-15e3f2c7-3f75-46d4-afae-0fd207d7fdde.png" width="100" height="100"></p>
 
-[![CI](https://github.com/geerlingguy/ansible-role-firewall/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-firewall/actions?query=workflow%3ACI)
+<h1 align="center">
+    Ansible Role Firewall (`iptables`)
+</h1>
 
-Installs an iptables-based firewall for Linux. Supports both IPv4 (`iptables`) and IPv6 (`ip6tables`).
+<p align="center" style="font-size: 1.2rem;">
+    Installs an iptables-based firewall for Linux. Supports both IPv4 (`iptables`) and IPv6 (`ip6tables`).
+</p>
 
-This firewall aims for simplicity over complexity, and only opens a few specific ports for incoming traffic (configurable through Ansible variables). If you have a rudimentary knowledge of `iptables` and/or firewalls in general, this role should be a good starting point for a secure system firewall.
+<p align="center">
 
-After the role is run, a `firewall` init service will be available on the server. You can use `service firewall [start|stop|restart|status]` to control the firewall.
+<a href="https://www.ansible.com">
+  <img src="https://img.shields.io/badge/Ansible-2.10-green?style=flat&logo=ansible" alt="Ansible">
+</a>
+<a href="LICENSE.md">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
+</a>
+<a href="https://ubuntu.com/">
+  <img src="https://img.shields.io/badge/ubuntu-20.x-orange?style=flat&logo=ubuntu" alt="Distribution">
+</a>
+<a href="https://www.centos.org/">
+  <img src="https://img.shields.io/badge/CentOS-8-green?style=flat&logo=centos" alt="Distribution">
+</a>
 
 ## Requirements
 
@@ -48,7 +63,7 @@ Any additional (custom) rules to be added to the firewall (in the same format yo
     # Allow only the IP 167.89.89.18 to access port 4949 (Munin).
     firewall_additional_rules:
       - "iptables -A INPUT -p tcp --dport 4949 -s 167.89.89.18 -j ACCEPT"
-    
+
     # Allow only the IP 214.192.48.21 to access port 3306 (MySQL).
     firewall_additional_rules:
       - "iptables -A INPUT -p tcp --dport 3306 -s 214.192.48.21 -j ACCEPT"
@@ -57,16 +72,9 @@ See [Iptables Essentials: Common Firewall Rules and Commands](https://www.digita
 
     firewall_log_dropped_packets: true
 
-Whether to log dropped packets to syslog (messages will be prefixed with "Dropped by firewall: ").
-
-    firewall_disable_firewalld: false
-    firewall_disable_ufw: false
-
-Set to `true` to disable firewalld (installed by default on RHEL/CentOS) or ufw (installed by default on Ubuntu), respectively.
+Set to `false` to disable configuration of ip6tables (for example, if your `GRUB_CMDLINE_LINUX` contains `ipv6.disable=1`).
 
     firewall_enable_ipv6: true
-
-Set to `false` to disable configuration of ip6tables (for example, if your `GRUB_CMDLINE_LINUX` contains `ipv6.disable=1`).
 
 ## Dependencies
 
@@ -80,7 +88,7 @@ None.
       roles:
         - { role: geerlingguy.firewall }
 
-*Inside `vars/main.yml`*:
+_Inside `vars/main.yml`_:
 
     firewall_allowed_tcp_ports:
       - "22"
@@ -89,8 +97,8 @@ None.
 
 ## TODO
 
-  - Make outgoing ports more configurable.
-  - Make other firewall features (like logging) configurable.
+- Make outgoing ports more configurable.
+- Make other firewall features (like logging) configurable.
 
 ## License
 

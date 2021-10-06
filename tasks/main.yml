@@ -39,5 +39,5 @@
 - name: IPTABLES | Configure the firewall service.
   ansible.builtin.service:
     name: firewall
-    state: "{{ firewall_state }}"
-    enabled: "{{ firewall_enabled_at_boot }}"
+    state: "{{ iptables_state }}"
+    enabled: "{{ iptables_enabled_at_boot }}"

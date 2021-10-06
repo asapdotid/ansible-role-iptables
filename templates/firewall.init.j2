@@ -18,18 +18,18 @@
 # Carry out specific functions when asked to by the system
 case "$1" in
   start)
-    echo "Starting firewall."
+    echo "Starting iptables."
     /etc/firewall.bash
     ;;
   stop)
-    echo "Stopping firewall."
+    echo "Stopping iptables."
     iptables -F
     if [ -x "$(which ip6tables 2>/dev/null)" ]; then
         ip6tables -F
     fi
     ;;
   restart)
-    echo "Restarting firewall."
+    echo "Restarting iptables."
     /etc/firewall.bash
     ;;
   status)

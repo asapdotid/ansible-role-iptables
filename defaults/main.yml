@@ -1,4 +1,10 @@
 ---
+# Disable default firewalls each os family.
+iptables_disabled_firewall: true
+iptables_disabled_firewall_services:
+  []
+  # - ufw.service
+
 iptables_state: started
 iptables_enabled_at_boot: true
 

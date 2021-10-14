@@ -1,0 +1,7 @@
+---
+iptables_packages:
+  - iptables
+  - iptables-persistent
+  - netfilter-persistent
+  # - ipset
+  # - ipset-persistent

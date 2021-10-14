@@ -29,6 +29,13 @@ None.
 
 ## Role Variables
 
+Dsiable default firewall before setup `iptables`
+
+    iptables_disabled_firewall: true
+    iptables_disabled_firewall_services:
+    []
+    # - ufw.service
+
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     iptables_state: started

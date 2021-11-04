@@ -22,3 +22,6 @@ iptables_additional_rules: []
 iptables_enable_ipv6: true
 iptables_ip6_additional_rules: []
 iptables_log_dropped_packets: true
+
+# Restart docker if service true
+iptables_docker_service_restart: false

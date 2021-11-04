@@ -3,3 +3,11 @@
   ansible.builtin.service:
     name: firewall
     state: restarted
+  notify: restart docker
+
+- name: restart docker
+  ansible.builtin.service:
+    name: docker
+    state: restarted
+  when:
+    - iptables_docker_service_restart | bool

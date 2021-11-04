@@ -1,0 +1,24 @@
+---
+- name: IPTABLES | Populate service facts
+  ansible.builtin.service_facts:
+
+- name: IPTABLES | Setup to disable firewall service before setup iptables
+  block:
+    - name: IPTABLES | Disable the {{ firewall_services }}
+      ansible.builtin.service:
+        name: "{{ firewall_services }}"
+        state: stopped
+        masked: yes
+        enabled: no
+      when:
+        - firewall_services in ansible_facts.services
+        - (ansible_facts.services[firewall_services].state == "running") or (ansible_facts.services[firewall_services].status == "enabled")
+
+  become: true
+  when:
+    - firewall_services != "{}"
+
+  rescue:
+    - name: IPTABLES | Disable firewall service errors
+      ansible.builtin.debug:
+        msg: "I caught an error, can do stuff here to fix it, :-)"

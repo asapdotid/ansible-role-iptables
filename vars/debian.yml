@@ -1,0 +1,10 @@
+---
+iptables_packages:
+  - iptables
+  # - iptables-persistent
+  # - netfilter-persistent
+  # - ipset
+  # - ipset-persistent
+
+iptables_disabled_firewall_services:
+  - ufw.service

@@ -1,0 +1,10 @@
+---
+iptables_packages:
+  - iptables-services
+  # - iptables-persistent
+  # - netfilter-persistent
+  # - ipset
+  # - ipset-persistent
+
+iptables_disabled_firewall_services:
+  - firewalld.service

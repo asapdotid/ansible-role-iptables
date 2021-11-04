@@ -1,8 +1,26 @@
 ---
+- name: IPTABLES | Include OS family of {{ ansible_os_family }} variables.
+  ansible.builtin.include_vars:
+    file: "{{ item }}.yml"
+  loop:
+    - "{{ ansible_os_family | lower }}"
+    - main
+
+- include_tasks: disable-firewalls.yml
+  loop: "{{ iptables_disabled_firewall_services }}"
+  loop_control:
+    loop_var: firewall_services
+  when:
+    - iptables_disabled_firewalls
+    - iptables_disabled_firewall_services != "{}"
+
 - name: IPTABLES | Ensure iptables is present.
   ansible.builtin.package:
-    name: iptables
+    name: "{{ item }}"
     state: present
+  loop: "{{ iptables_packages }}"
+  when:
+    - iptables_packages != "{}"
 
 - name: IPTABLES | Flush iptables the first time playbook runs.
   ansible.builtin.command: >

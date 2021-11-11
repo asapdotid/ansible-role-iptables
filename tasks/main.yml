@@ -11,7 +11,7 @@
   loop_control:
     loop_var: firewall_services
   when:
-    - iptables_disabled_firewalls
+    - iptables_disabled_firewall
     - iptables_disabled_firewall_services != "{}"
 
 - name: IPTABLES | Ensure iptables is present.
